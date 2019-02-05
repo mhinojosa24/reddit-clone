@@ -20,7 +20,7 @@ app.engine('.hbs', exphbs({ extname: '.hbs', defaultLayout: 'main'}));
 app.set('view engine', '.hbs');
 
 
-const controllers = require('./controllers/posts')(app);
+const controllers = require('./controllers/post')(app);
 
 
 
