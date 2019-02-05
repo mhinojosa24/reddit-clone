@@ -8,7 +8,11 @@ module.exports = (app) => {
 
     // index
     app.get('/', (req, res) => {
-        res.render('home', { msg: 'Handlebars are Cool!'})
+        Post.find({}).then(posts => {
+            res.render('posts-index', { posts });
+        }).catch( err => {
+            console.log(err.message);
+        });
     });
 
     // new
