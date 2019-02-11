@@ -17,10 +17,9 @@ module.exports = (app) => {
 
     // new
     app.get('/posts/new', (req, res) => {
-        res.render('posts-new');
+        res.render('posts-new', {});
     });
 
-    //Create
     app.post('/posts/new', (req, res) => {
         // INSTANTIATE INSTANCE OF POST MODEL
         const post = new Post(req.body);
