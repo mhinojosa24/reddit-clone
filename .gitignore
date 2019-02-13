@@ -113,3 +113,10 @@ typings/
 .dynamodb/
 
 # End of https://www.gitignore.io/api/node,macos
+
+# Created by https://www.gitignore.io/api/.env
+# Edit at https://www.gitignore.io/?templates=.env
+
+#!! ERROR: .env is undefined. Use list command to see defined gitignore types !!#
+
+# End of https://www.gitignore.io/api/.env
