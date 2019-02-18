@@ -68,4 +68,8 @@ module.exports = (app) => {
             console.log(err.message);
         });
     });
+    //ToDo make route /profile to deisplay users posts and comments
+    // app.get("/users/:username", function(req, res) {
+    //     Post.findById()
+    // });
 }

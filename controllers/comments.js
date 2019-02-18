@@ -10,9 +10,9 @@ module.exports = function(app) {
     app.post("/posts/:postId/comments", function(req, res) {
         const comment = new Comment(req.body);
         comment.author = req.user._id;
-      // SAVE INSTANCE OF Comment MODEL TO DB
-      comment.save().then(comment => {
-          return Post.findById(req.params.postId);
+
+        comment.save().then(comment => {
+            return Post.findById(req.params.postId);
         }).then(post => {
             post.comments.unshift(comment);
             return post.save();

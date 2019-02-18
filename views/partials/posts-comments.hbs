@@ -1,0 +1,16 @@
+{{#each post.comments}}
+
+    <div class="container" >
+        <!-- ToDo: make link an author's comments a link that
+            displays their profile /users/:username-->
+        <a href="#">{{this.content}}</a>
+        <div class="text-right" >
+            <!-- ToDo: make link an author's username a link that
+                displays their profile /users/:username-->
+            <a style="display:block;padding:20px" href="#">
+                <p>{{this.author.username}}</p>
+            </a>
+        </div>
+    </div>
+
+{{/each}}
