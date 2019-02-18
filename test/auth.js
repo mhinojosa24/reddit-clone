@@ -57,3 +57,7 @@ describe("User", function() {
             done();
         });
     });
+
+    // ToDo
+    // write test to test that it is impossible to create a post if a user is not logged in
+    // make all auth tests not pass, and then pass? what about your newly updated post test?
