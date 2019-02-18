@@ -4,8 +4,9 @@ const app = require('./../server');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
-
+const agent = chai.request.agent(app);
 const Post = require('../models/post');
+const User = require('../models/user');
 const server = require('../server');
 
 chai.should;
@@ -21,6 +22,18 @@ describe('Posts', function() {
         url: 'www.google.com',
         summary: 'post summary'
     };
+    const user = {
+        username: 'poststest',
+        password: 'testposts'
+    };
+    before(function (done) {
+      agent.post('/sign-up').set("content-type", "application/x-www-form-urlencoded").send(user)
+        .then(function (res) {
+          done();
+        }).catch(function (err) {
+          done(err);
+        });
+    });
 
     it('Should create with valid attributes at POST /posts/new', function(done) {
         Post.estimatedDocumentCount().then(function (initialDocCount) {
@@ -41,9 +54,19 @@ describe('Posts', function() {
     });
 
 
-    after(function() {
-        Post.findOneAndDelete(newPost);
+    after(function (done) {
+        Post.findOneAndDelete(newPost).then(function (res) {
+            agent.close()
+
+            User.findOneAndDelete({
+                username: user.username
+            }).then(function (res) {
+                done()
+            }).catch(function (err) {
+                done(err);
+            });
+        }).catch(function (err) {
+          done(err);
+        });
     });
-
-
 });
