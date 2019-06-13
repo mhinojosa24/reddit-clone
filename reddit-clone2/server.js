@@ -20,7 +20,9 @@ app.set('view engine', '.hbs');
 
 
 const post = require('./controllers/posts');
+const comment = require('./controllers/comments');
 app.use(post);
+app.use(comment);
 
 
 
