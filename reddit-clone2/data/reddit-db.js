@@ -3,18 +3,10 @@
 const mongoose = require('mongoose');
 assert = require('assert');
 
-// url for your db
-const url = "mongodb://localhost/db-reddit";
 mongoose.Promise = global.Promise;
 mongoose.connect(
-    url,
+    "mongodb://localhost/db-reddit",
     { useNewUrlParser: true },
-    function(err, db) {
-        assert.equal(null, err);
-        console.log('Connected successfully to database');
-        // db.close(); // turn on for testing
-    }
-
 );
 
 mongoose.connection.on('error', console.error.bind(console, "MongoDB connection Error:"));
